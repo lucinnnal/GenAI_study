@@ -31,4 +31,4 @@ The induction of MLE in the normal distribution is in pages 66-69.
 Example of MLE for a normal distribution using height data is available in [`mle.py`](./mle.py).
 
 ## Comparison between Sample and Generated Data
-![Comparison between sample and generated data](./comparison.png)
+![Comparison between sample and generated data](comparison.png)
