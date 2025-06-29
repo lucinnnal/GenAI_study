@@ -1,10 +1,14 @@
-# 🧠 Generative AI Study Log
+# 🧠 Summer Vacation Generative AI Study Log
 
 Welcome to my **Generative AI Study Log**! 🚀
 
 This repository tracks my ongoing journey through the world of Generative AI — including key models, coding exercises and implementations.
 
 ## 🗂️ Topics Covered
+
+### ✅ Probability and Statistics Fundamentals
+- Core concepts essential for understanding generative models
+- Probability distributions, expectation, variance, KL divergence, MLE etc..
 
 ### ✅ Deep Learning from Scratch (DLscratch5)
 - Basic concept of Generative AI
@@ -15,10 +19,6 @@ This repository tracks my ongoing journey through the world of Generative AI —
 - Understanding denoising diffusion probabilistic models (DDPM)
 - Implementing and visualizing diffusion steps
 - Applications in image generation
-
-### ✅ Probability and Statistics Fundamentals
-- Core concepts essential for understanding generative models
-- Probability distributions, expectation, variance, KL divergence, MLE etc..
 
 ## 📌 Goal
 To deeply understand and reproduce generative AI models from scratch where possible, while logging experiments, notes, and key findings.
