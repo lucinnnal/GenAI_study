@@ -10,7 +10,9 @@ Day 3 covers the **Expectation-Maximization (EM) algorithm**.
 
 # EM result & Generated Data and Original Data Comparison
 ![EM Result](./trained_gmm_contour.png)
+
 *Figure: Contour lines of the GMM model after EM algorithm training.*
 
 ![Generated Data](./gmm_generated_samples.png)
+
 *Figure: 500 samples generated from the trained GMM model.*
