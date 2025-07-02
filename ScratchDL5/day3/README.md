@@ -7,4 +7,4 @@ Day 3 covers the **Expectation-Maximization (EM) algorithm**.
 - Includes a **coding exercise** to implement the algorithm in practice.
 
 
-> This directory summarizes both theoretical and practical aspects of the EM algorithm covered on Day 3. Check out the [`code`](./em.py) and ['note'](./day3%20note.pdf) for a deeper understanding.
+> This directory summarizes both theoretical and practical aspects of the EM algorithm covered on Day 3. Check out the [code](./em.py) and [note](./day3%20note.pdf) for a deeper understanding.
