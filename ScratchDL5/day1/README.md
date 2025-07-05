@@ -21,9 +21,9 @@ We refer to parameter estimation as **"Training"** in generative modeling.
 
 Find the optimal parameter of the modeled (or supposed) distribution that maximizes the sample likelihood.
 
-> likelihood \( \rightarrow \) 샘플이 관찰될 확률이 가장 높은 분포를 만드는 parameters
+> 샘플이 관찰될 확률(likelihood)이 가장 높은 분포를 만드는 parameters를 찾는다
 
-The induction of MLE in the normal distribution is in pages 66-69.
+The induction of MLE in the normal distribution is in book p66-69.
 
 ---
 
