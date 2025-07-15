@@ -28,8 +28,8 @@ class Diffuser:
 
         return x_t, noise
     
-    # A function for denoising at each step
-    def denoise(self, model, x, ts):
+    # A function for denoising at each step, provide xt, t, and also a condition which is 'label' for neural network UNet
+    def denoise(self, model, x, ts, labels):
         T = self.num_timesteps
         assert (ts>=1).all() and (ts<=T).all()
 
@@ -44,10 +44,10 @@ class Diffuser:
         alpha_bar = alpha_bar.view(N, 1, 1, 1)
         alpha_bar_prev = alpha_bar_prev.view(N, 1, 1, 1)
 
-        # Model Noise Prediction
+        # Model Noise Prediction 
         model.eval()
         with torch.no_grad():
-            pred_noise = model(x, ts)
+            pred_noise = model(x, ts, labels)
         model.train()
 
         # Reparameterization Trick
@@ -60,19 +60,23 @@ class Diffuser:
 
         return x_prev
 
-    # Generation (Sampling)
-    def sample(self, model, gen_sample_shape=(20, 1, 28, 28)):
+    # Generation (Sampling) -> Also give condition(label) when sampling !
+    def sample(self, model, gen_sample_shape=(20, 1, 28, 28), labels=None):
         batch_size = gen_sample_shape[0]
-        x = torch.randn(gen_sample_shape, device = self.device) # extract complete gaussian noise x_t for sampling 
+        x = torch.randn(gen_sample_shape, device = self.device) # extract complete gaussian noise x_t for sampling
+
+        # Add condition when sampling
+        if labels is None:
+            labels = torch.randint(0, 10, (batch_size,), device=self.device)
 
         # Reverse Denoising from T for sampling
         for i in tqdm(range(self.num_timesteps, 0, -1)):
             t = torch.tensor([i] * batch_size, device=self.device, dtype=torch.long)
-            x = self.denoise(model, x, t)
+            x = self.denoise(model, x, t, labels) # Add condition when denoising
         
         # Return generated x_0s to PIL Image
         images = [self.reverse_to_img(x[i]) for i in range(batch_size)]
-        return images
+        return images, labels
 
     # Reverse to IMG from tensor
     def reverse_to_img(self, x):

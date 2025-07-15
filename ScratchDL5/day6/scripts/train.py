@@ -19,18 +19,19 @@ def train(model, diffuser, dataloader, criterion, optimizer, args):
         loss_sum = 0.0
         cnt = 0
 
-        for imgs, _ in tqdm(dataloader):
+        for imgs, labels in tqdm(dataloader):
             optimizer.zero_grad()
             
             # Sampling
             batch_size = imgs.shape[0]
             x = imgs.to(args.device) # Random Sampling Train Images and move to device
+            labels = labels.to(args.device)
             t = torch.randint(1, args.num_timesteps+1, (batch_size,), device=args.device) # Random Sampling timestep for each data in Uniform distribution {1,T}
 
             # Forward Diffusion Process
             x_t, noise = diffuser.add_noise(x, t) # Forward Diffusion Process -> Directly get x_t step noised data form x0
             # Denoising (Model Noise Prediction)
-            noise_pred = model(x_t, t)
+            noise_pred = model(x_t, t, labels)
 
             loss = criterion(noise, noise_pred)
             loss.backward()
@@ -40,7 +41,7 @@ def train(model, diffuser, dataloader, criterion, optimizer, args):
             cnt += 1
         
         avg_epoch_loss = loss_sum / cnt
-        losses.append(avg_epoch_loss)
+        losses.append(avg_epoch_loss.detach().cpu().item())
         print(f"Epoch {epoch+1} |||||||| Loss : {avg_epoch_loss}")
     
     return losses
@@ -63,8 +64,8 @@ def main(args):
     plt.show()
 
     # Generate After Training
-    images = diffuser.sample(model, gen_sample_shape=args.gen_sample_shape)
-    show_images(images)
+    images, labels = diffuser.sample(model)
+    show_images(images, labels)
     print("Generation Finished!")
 
 if __name__ == "__main__":
