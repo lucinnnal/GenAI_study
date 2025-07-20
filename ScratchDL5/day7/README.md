@@ -11,3 +11,7 @@ During the coding session, we implemented and trained a **Classifier-Free Guidan
 
 - 📄 The **Main Note** is documented in ![note](./day6_&_day7.pdf).
 - 📁 For supplementary materials, refer to the `supplements/` directory.
+
+## Generated Pictures of Conditional Diffusion & Classifier Free Guidance Diffusion Models : A Comparison
+![Generated Pictures of Conditional_Diffusion](./pics/coditioned_generated_images.png)
+![Generated Pictures of CFG_Diffusion](./pics/CFG_generated_images.png)
