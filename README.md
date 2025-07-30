@@ -15,6 +15,12 @@ This repository tracks my ongoing journey through the world of Generative AI —
 - VAE, DDPM will be covered
 - The official code is available at [DL5](https://github.com/WegraLee/deep-learning-from-scratch-5/tree/main)
 
+### ✅ Stanford CS236n lecture : Deep Generative Models
+- Basic concept of Generative AI
+- Representative Generative Models will be covered (eg.VAE, GAN, Diffusion)
+- Normalizing Flow, Score/Energy Based Models will be covered
+
+
 ### ✅ Diffusion Models
 - Understanding denoising diffusion probabilistic models (DDPM)
 - Implementing and visualizing diffusion steps
